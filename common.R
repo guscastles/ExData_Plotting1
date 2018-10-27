@@ -2,6 +2,12 @@ library(tidyr)
 library(dplyr)
 library(lubridate)
 
+make_plot <- function(make_function, plot_number) {
+        png(file = paste0("plot", plot_number, ".png"), width = 480, height = 480)
+        make_function(fetch_data())
+        dev.off()
+}
+
 fetch_data <- function() {
         url = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
         dest_file <- url %>% download_data

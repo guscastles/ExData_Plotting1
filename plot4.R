@@ -9,7 +9,5 @@ plot4 <- function(dataset) {
 }
 
 make_plot4 <- function() {
-        png(file = "plot4.png", width = 480, height = 480)
-        plot4(fetch_data())
-        dev.off()
+        make_plot(plot4, 4)
 }

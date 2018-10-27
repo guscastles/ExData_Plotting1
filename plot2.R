@@ -11,7 +11,5 @@ plot2 <- function(dataset, ylabel = "Global Active Power (kilowatts)") {
 }
 
 make_plot2 <- function() {
-        png(file = "plot2.png", width = 480, height = 480)
-        plot2(fetch_data())
-        dev.off()
+        make_plot(plot2, 2)
 }

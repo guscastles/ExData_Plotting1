@@ -8,7 +8,5 @@ plot1 <- function(dataset) {
 }
 
 make_plot1 <- function() {
-        png(file = "plot1.png", width = 480, height = 480)
-        plot1(fetch_data())
-        dev.off()
+        make_plot(plot1, 1)
 }

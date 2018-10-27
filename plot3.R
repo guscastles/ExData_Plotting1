@@ -15,7 +15,5 @@ plot3 <- function(dataset) {
 }
 
 make_plot3 <- function() {
-        png(file = "plot3.png", width = 480, height = 480)
-        plot3(fetch_data())
-        dev.off()
+        make_plot(plot3, 3)
 }
