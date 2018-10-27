@@ -1,7 +1,6 @@
 source("common.R")
 
 plot3 <- function(dataset) {
-        png(file = "plot3.png", width = 480, height = 480)
         nrows <- dim(dataset)[1]
         hour_range <- 1:nrows
         plot(hour_range, dataset$Sub_metering_1, type = "n", xaxt = "n",
@@ -13,9 +12,10 @@ plot3 <- function(dataset) {
                col = c("black", "red", "blue"), lty = c(1, 1, 1))
         axis(1, at = c(1, floor(nrows / 2), nrows), tick = TRUE,
              labels = create_labels(as.Date(dataset$Date)))
-        dev.off()
 }
 
 make_plot3 <- function() {
+        png(file = "plot3.png", width = 480, height = 480)
         plot3(fetch_data())
+        dev.off()
 }
