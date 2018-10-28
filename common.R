@@ -12,6 +12,7 @@ fetch_data <- function() {
         url = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
         dest_file <- url %>% download_data
         dataset <- dest_file %>% read_data
+	dataset
 }
 
 download_data <- function(url) {
