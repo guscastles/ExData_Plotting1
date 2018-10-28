@@ -55,3 +55,13 @@ create_labels <- function(date) {
         last <- weekdays(tail(dates, 1) + 1, abbreviate = TRUE)
         c(first, middle, last)
 }
+
+create_axis <- function(dataset) {
+        nrows <- dim(dataset)[1]
+        axis(1, at = c(1, floor(nrows / 2), nrows), tick = TRUE,
+             labels = create_labels(as.Date(dataset$Date)))
+}
+
+create_datetime_range <- function(dataset) {
+        1:dim(dataset)[1]
+}

@@ -1,13 +1,11 @@
 source("common.R")
 
 plot2 <- function(dataset, ylabel = "Global Active Power (kilowatts)") {
-        nrows <- dim(dataset)[1]
-        hour_range <- 1:nrows
-        plot(hour_range, dataset$Global_active_power, type = "n", xaxt = "n",
+        datetime_range <- create_datetime_range(dataset)
+        plot(datetime_range, dataset$Global_active_power, type = "n", xaxt = "n",
              ylab = ylabel, xlab = "")
-        lines(hour_range, dataset$Global_active_power, type = "l")
-        axis(1, at = c(1, floor(nrows / 2), nrows),
-             labels = create_labels(as.Date(dataset$Date)), tick = TRUE)
+        lines(datetime_range, dataset$Global_active_power, type = "l")
+        create_axis(dataset)
 }
 
 make_plot2 <- function() {
