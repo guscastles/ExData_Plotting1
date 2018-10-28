@@ -45,23 +45,8 @@ read_data <- function(file_name) {
         
         dataset <- read.delim("household_power_consumption.txt", skip = 66637,
                               nrows = 2880, sep = ";", header = FALSE)
-        dataset %>% change_columns %>% change_datatypes
-}
-
-create_labels <- function(date) {
-        dates <- unique(date)
-        first <- weekdays(dates[1], abbreviate = TRUE)
-        middle <- weekdays(dates[ceiling(length(dates) / 2) + 1], abbreviate = TRUE)
-        last <- weekdays(tail(dates, 1) + 1, abbreviate = TRUE)
-        c(first, middle, last)
-}
-
-create_axis <- function(dataset) {
-        nrows <- dim(dataset)[1]
-        axis(1, at = c(1, floor(nrows / 2), nrows), tick = TRUE,
-             labels = create_labels(as.Date(dataset$Date)))
-}
-
-create_datetime_range <- function(dataset) {
-        1:dim(dataset)[1]
+        dataset %>%
+                change_columns %>%
+                mutate(datetime = as.POSIXct(strptime(paste(Date, Time, sep = " "),
+                                                      "%d/%m/%Y %H:%M:%S")))
 }

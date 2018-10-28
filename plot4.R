@@ -10,19 +10,13 @@ plot4 <- function(dataset) {
 }
 
 plot4a <- function(dataset) {
-        datetime_range <- create_datetime_range(dataset)
-        plot(datetime_range, dataset$Voltage, type = "n", xaxt = "n",
-             ylab = "Voltage", xlab = "datetime")
-        lines(datetime_range, dataset$Voltage, type = "l")
-        create_axis(dataset)
+        with(dataset, plot(datetime, Voltage, type = "l",
+                           ylab = "Voltage", xlab = "datetime"))
 }
 
 plot4b <- function(dataset) {
-        datetime_range <- create_datetime_range(dataset)
-        plot(datetime_range, dataset$Global_reactive_power, type = "n", xaxt = "n",
-             xlab = "datetime", ylab = "Global_reactive_power")
-        lines(datetime_range, dataset$Global_reactive_power, type = "l")
-        create_axis(dataset)
+        with(dataset, plot(datetime, Global_reactive_power, type = "l",
+                           xlab = "datetime", ylab = "Global_reactive_power"))
 }
 
 make_plot4 <- function() {
