@@ -26,16 +26,6 @@ download_data <- function(url) {
 
 read_data <- function(file_name) {
         
-        change_datatypes <- function(data_set) {
-                data_set["Date"] <- data_set %>%
-                        select(Date) %>%
-                        mutate(Date = dmy(Date))
-                data_set["Time"] <- data_set %>%
-                        select(Time) %>%
-                        mutate(Time = as.POSIXct(strptime(Time, format = "%H:%M:%S")))
-                data_set
-        }
-        
         change_columns <- function(data_set) {
                 header <- read.delim("household_power_consumption.txt", nrows = 1,
                                      sep = ";", header = TRUE)
